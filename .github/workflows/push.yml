@@ -17,5 +17,4 @@ jobs:
 
       - name: bulid sources
         run: |
-          cppcheck --std=c11 --quiet .
           make
