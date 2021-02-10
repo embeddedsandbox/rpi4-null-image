@@ -1,0 +1,21 @@
+on:
+  push:
+    branches: master
+    
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    container : embeddedsandbox/aarch64-none-elf-10.2-2021-02-01:latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: 'true'
+
+      - name: bulid sources
+        run: |
+          cppcheck --std=c11 --quiet .
+          make
